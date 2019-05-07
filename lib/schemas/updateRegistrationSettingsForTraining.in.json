@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": true,
+            "type": "string"
+        },
+        "organizerKey": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "trainingKey": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "description": "Training settings, namely availability of web registration and confirmation emails to the training registrants",
+            "properties": {
+                "disableConfirmationEmail": {
+                    "description": "Indicates whether confirmation emails to the training registrants are disabled",
+                    "type": "boolean"
+                },
+                "disableWebRegistration": {
+                    "description": "Indicates whether the web registration for the training is disabled",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "disableConfirmationEmail",
+                "disableWebRegistration"
+            ],
+            "type": "object"
+        }
+    }
+}

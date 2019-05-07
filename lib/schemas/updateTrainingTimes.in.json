@@ -1,0 +1,65 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": true,
+            "type": "string"
+        },
+        "organizerKey": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "trainingKey": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "description": "Details required to update the session times of a training.",
+            "properties": {
+                "notifyRegistrants": {
+                    "description": "Notify registrants via email of change to training. Default is true",
+                    "type": "boolean"
+                },
+                "notifyTrainers": {
+                    "description": "Notify trainers via email of change to training. Default is true",
+                    "type": "boolean"
+                },
+                "timeZone": {
+                    "description": "Time zone of the training. Must be a valid time zone ID, see https://goto-developer.logmein.com/time-zones",
+                    "type": "string"
+                },
+                "times": {
+                    "description": "Start and end times for the training sessions",
+                    "items": {
+                        "description": "A pair of DateTime values, the first of which serves as a start time and the second as an end time of an interval",
+                        "properties": {
+                            "endDate": {
+                                "description": "The ending time of an interval",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "startDate": {
+                                "description": "The starting time of an interval",
+                                "format": "date-time",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "startDate",
+                            "endDate"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "timeZone",
+                "times"
+            ],
+            "type": "object"
+        }
+    }
+}

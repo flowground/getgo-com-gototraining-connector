@@ -1,0 +1,40 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": true,
+            "type": "string"
+        },
+        "organizerKey": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "trainingKey": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "description": "Details required to update the list of organizers for a training.",
+            "properties": {
+                "notifyOrganizers": {
+                    "description": "Specifies whether an email should be sent notifying of the change to the training's organizers.",
+                    "type": "boolean"
+                },
+                "organizers": {
+                    "description": "List of keys of the organizers for the training.",
+                    "items": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "organizers"
+            ],
+            "type": "object"
+        }
+    }
+}

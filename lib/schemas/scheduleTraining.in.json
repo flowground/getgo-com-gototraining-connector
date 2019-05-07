@@ -1,0 +1,87 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": true,
+            "type": "string"
+        },
+        "organizerKey": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "description": "Describes the details used to create a new training.",
+            "properties": {
+                "description": {
+                    "description": "Description of the training",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the training",
+                    "type": "string"
+                },
+                "organizers": {
+                    "description": "List of keys of the co-organizers for this training",
+                    "items": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "registrationSettings": {
+                    "description": "Training settings, namely web registration and confirmation emails to the training registrants",
+                    "properties": {
+                        "disableConfirmationEmail": {
+                            "description": "Indicates whether confirmation emails to the training registrants are disabled",
+                            "type": "boolean"
+                        },
+                        "disableWebRegistration": {
+                            "description": "Indicates whether the web registration for the training is disabled",
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "disableConfirmationEmail",
+                        "disableWebRegistration"
+                    ],
+                    "type": "object"
+                },
+                "timeZone": {
+                    "description": "Time zone of the training. (Must be a valid time zone ID, see https://goto-developer.logmein.com/time-zones)",
+                    "type": "string"
+                },
+                "times": {
+                    "description": "Array with startDate and endDate for the training sessions",
+                    "items": {
+                        "description": "A pair of DateTime values, the first of which serves as a start time and the second as an end time of an interval",
+                        "properties": {
+                            "endDate": {
+                                "description": "The ending time of an interval",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "startDate": {
+                                "description": "The starting time of an interval",
+                                "format": "date-time",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "startDate",
+                            "endDate"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "name",
+                "timeZone",
+                "times"
+            ],
+            "type": "object"
+        }
+    }
+}
